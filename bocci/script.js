@@ -126,14 +126,25 @@ function saveToDiary(mission, photo, comment) {
 
 // 通知の表示
 function showAchievementNotification(mission) {
+    // 通知コンテナを作成
     const notification = document.createElement('div');
-    notification.className = 'notification';
+    notification.className = 'achievement-notification';
     notification.textContent = `${mission} ミッションを達成しました！`;
 
+    // 通知を画面に追加
     document.body.appendChild(notification);
-    setTimeout(() => notification.classList.add('show'), 100);
-    setTimeout(() => notification.remove(), 3000);
+
+    // 0.1秒後にクラスを追加してトランジションを発動
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+
+    // 3秒後に通知を削除
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
+
 
 // ページロード時の処理
 document.addEventListener('DOMContentLoaded', () => {
